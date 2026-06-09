@@ -1,0 +1,100 @@
+{
+    "best_model_name": "Gradient Boosting Regressor",
+    "metrics": {
+        "Multiple Linear Regression": {
+            "MAE": 6961.48,
+            "RMSE": 9055.96,
+            "R2": 0.8987
+        },
+        "Ridge Regression": {
+            "MAE": 6981.72,
+            "RMSE": 9064.07,
+            "R2": 0.8985
+        },
+        "Random Forest Regressor": {
+            "MAE": 5720.59,
+            "RMSE": 7718.48,
+            "R2": 0.9264
+        },
+        "Gradient Boosting Regressor": {
+            "MAE": 4986.88,
+            "RMSE": 7234.09,
+            "R2": 0.9354
+        }
+    },
+    "feature_importances": {
+        "type": "Feature Importances",
+        "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_California",
+            "State_Florida",
+            "State_New York"
+        ],
+        "values": [
+            0.938,
+            0.0059,
+            0.0505,
+            0.0034,
+            0.0013,
+            0.0011
+        ]
+    },
+    "summary_stats": {
+        "shape": [
+            50,
+            5
+        ],
+        "corr_matrix": {
+            "R&D Spend": {
+                "R&D Spend": 1.0,
+                "Administration": 0.24195524508168925,
+                "Marketing Spend": 0.7242481330538794,
+                "Profit": 0.9729004656594831
+            },
+            "Administration": {
+                "R&D Spend": 0.24195524508168925,
+                "Administration": 1.0,
+                "Marketing Spend": -0.03215387512538653,
+                "Profit": 0.20071656826872125
+            },
+            "Marketing Spend": {
+                "R&D Spend": 0.7242481330538794,
+                "Administration": -0.03215387512538653,
+                "Marketing Spend": 1.0,
+                "Profit": 0.7477657217414768
+            },
+            "Profit": {
+                "R&D Spend": 0.9729004656594831,
+                "Administration": 0.20071656826872125,
+                "Marketing Spend": 0.7477657217414768,
+                "Profit": 1.0
+            }
+        },
+        "state_stats": {
+            "California": {
+                "mean": 103905.17529411765,
+                "median": 97427.84,
+                "count": 17
+            },
+            "Florida": {
+                "mean": 118774.02437500001,
+                "median": 109543.12,
+                "count": 16
+            },
+            "New York": {
+                "mean": 113756.44647058823,
+                "median": 108552.04,
+                "count": 17
+            }
+        },
+        "columns": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State",
+            "Profit"
+        ]
+    }
+}
