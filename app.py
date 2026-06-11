@@ -240,11 +240,24 @@ if app_mode == "🚀 Project Overview":
         </div>
         """, unsafe_allow_html=True)
         
-    st.markdown("### The CRISP-DM Lifecycle Steps in this App:")
+    st.markdown("### The CRISP-DM Workflow:")
     
     st.markdown(f"""
     <div class='{card_class}'>
-        <ol>
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+            <div style="flex: 1; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);"><b>1. Business</b><br><span style="font-size:0.8rem">Objectives</span></div>
+            <div style="color: #6366f1; font-weight: bold;">&#10140;</div>
+            <div style="flex: 1; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);"><b>2. Data</b><br><span style="font-size:0.8rem">Exploration</span></div>
+            <div style="color: #6366f1; font-weight: bold;">&#10140;</div>
+            <div style="flex: 1; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);"><b>3. Prep</b><br><span style="font-size:0.8rem">Scaling & OHE</span></div>
+            <div style="color: #6366f1; font-weight: bold;">&#10140;</div>
+            <div style="flex: 1; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);"><b>4. Modeling</b><br><span style="font-size:0.8rem">Training</span></div>
+            <div style="color: #6366f1; font-weight: bold;">&#10140;</div>
+            <div style="flex: 1; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.2);"><b>5. Eval</b><br><span style="font-size:0.8rem">Metrics</span></div>
+            <div style="color: #a855f7; font-weight: bold;">&#10140;</div>
+            <div style="flex: 1; padding: 15px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.3);"><b>6. Deploy</b><br><span style="font-size:0.8rem">Web App</span></div>
+        </div>
+        <ol style="margin-top: 15px; font-size: 0.95rem; color: #334155;">
             <li><b>Business Understanding</b>: Define the business questions and objectives.</li>
             <li><b>Data Understanding</b>: Explore the 50 Startups dataset structure, summary statistics, and correlations.</li>
             <li><b>Data Preparation</b>: Preprocess variables (Scaling and One-Hot Encoding state categories).</li>
