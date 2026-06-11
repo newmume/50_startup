@@ -73,18 +73,12 @@ Quantify the ROI of department-level investments (R&D, marketing, operations) an
 *   **Correlations**: R&D Spend has a Pearson correlation coefficient of **0.973** with Profit. Marketing Spend has **0.748**. Administration Spend has a low correlation of **0.201**.
 
 ### 3. Data Preparation
-*   **One-Hot Encoding (獨熱編碼)**: `State` column encoded via `OneHotEncoder`. By converting categorical values into multiple binary indicator columns (0 or 1), we prevent the model from assuming an artificial hierarchy or mathematical order among different states.
+*   Categorical encoding: `State` column encoded via `OneHotEncoder`.
 *   Feature scaling: Continuous numeric fields normalized via `StandardScaler`.
 *   Data Split: 80% Training set (40 rows) and 20% Testing set (10 rows).
 
-### 4. Modeling
-We trained 4 regression pipelines with hyperparameter search, including Multiple Linear Regression, Ridge Regression, Random Forest, and Gradient Boosting Regressor.
-
-### 5. Model Evaluation
-Evaluated models on the validation set. **Gradient Boosting Regressor** performed the best, explaining **93.54%** of the target variance on the test set.
-
-### 5.1 Feature Selection Study
-Explored 5 different feature selection schemes (Forward Selection, Backward Elimination, RFE, SelectKBest with F-Regression, and Mutual Info) to find the optimal combination of variables.
+### 4. Modeling & 5. Evaluation
+We trained 4 regression pipelines with hyperparameter search. **Gradient Boosting Regressor** performed the best, explaining **93.54%** of the target variance on the test set.
 
 ### 6. Deployment
 The best pipeline is serialized into `best_model.pkl` and deployed as a real-time web calculator in `app.py`.

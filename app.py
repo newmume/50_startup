@@ -188,9 +188,10 @@ app_mode = st.sidebar.radio(
         "🚀 Project Overview",
         "1. Business Understanding",
         "2. Data Understanding",
-        "3 & 4. Prep & Modeling",
+        "3. Data Preparation",
+        "4. Modeling",
         "5. Model Evaluation",
-        "5. Feature Selection Study",
+        "    5.1 Feature Selection Study",
         "6. Interactive Predictor (Deployment)"
     ]
 )
@@ -325,38 +326,81 @@ elif app_mode == "2. Data Understanding":
     else:
         st.error("Dataset not found! Please run the training pipeline first to make sure files are generated.")
 
-# ----------------- PHASE 3 & 4: DATA PREP & MODELING -----------------
-elif app_mode == "3 & 4. Prep & Modeling":
-    st.markdown("<h1 class='gradient-text'>Phases 3 & 4: Data Preparation & Modeling</h1>", unsafe_allow_html=True)
+# ----------------- PHASE 3: DATA PREPARATION -----------------
+elif app_mode == "3. Data Preparation":
+    st.markdown("<h1 class='gradient-text'>Phase 3: Data Preparation</h1>", unsafe_allow_html=True)
     
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown(f"""
-        <div class='{card_class}'>
-            <h3>🛠️ Data Preparation Steps</h3>
-            <p>To prepare the raw startup data for Scikit-learn regressors, we executed:</p>
-            <ul>
-                <li><b>One-Hot Encoding:</b> Converted the categorical column <code>State</code> (New York, California, Florida) into indicator columns to avoid imposing an artificial numerical order.</li>
-                <li><b>Standardization:</b> Normalized numeric columns (<code>R&D Spend</code>, <code>Administration</code>, <code>Marketing Spend</code>) to have a mean of 0 and standard deviation of 1. This prevents features with larger ranges from dominating models like Ridge or Gradient Boosting.</li>
-                <li><b>Train-Test Split:</b> Split the data into an 80% Training set (40 startups) and 20% Validation set (10 startups) to measure generalization performance.</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class='{card_class}'>
+        <h3>🛠️ Data Preparation Steps</h3>
+        <p>To prepare the raw startup data for Scikit-learn regressors, we executed the following procedures:</p>
+        <ul>
+            <li><b>One-Hot Encoding (獨熱編碼):</b> Converted the categorical column <code>State</code> (New York, California, Florida) into multiple binary indicator columns (0 or 1). 
+            <br><i>Concept:</i> Machine learning models require numerical input. If we simply assigned numbers (e.g., NY=1, CA=2, FL=3), the model might falsely assume an artificial mathematical order (FL > NY). One-Hot Encoding solves this by creating separate boolean columns for each state, ensuring unbiased learning.</li>
+            <br>
+            <li><b>Standardization:</b> Normalized numeric columns (<code>R&D Spend</code>, <code>Administration</code>, <code>Marketing Spend</code>) to have a mean of 0 and standard deviation of 1. This prevents features with larger ranges from dominating models like Ridge or Gradient Boosting.</li>
+            <br>
+            <li><b>Train-Test Split:</b> Split the data into an 80% Training set (40 startups) and 20% Validation set (10 startups) to measure generalization performance.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if df is not None:
+        st.markdown("### 📊 Interactive Data Transformations")
         
-    with col2:
-        st.markdown(f"""
-        <div class='{card_class}'>
-            <h3>🤖 Model Selection Strategy</h3>
-            <p>We trained four distinct types of algorithms using Scikit-Learn pipelines to identify the best fit:</p>
-            <ol>
-                <li><b>Multiple Linear Regression:</b> Provides a baseline understanding and directly interpretable linear equations.</li>
-                <li><b>Ridge Regression (L2 Regularization):</b> Adds regularized penalties to coefficients to control potential overfitting.</li>
-                <li><b>Random Forest Regressor:</b> An ensemble tree-based method that models non-linear relationships.</li>
-                <li><b>Gradient Boosting Regressor:</b> Sequentially builds boosting decision trees to minimize residuals.</li>
-            </ol>
-        </div>
-        """, unsafe_allow_html=True)
+        tab_ohe, tab_scale = st.tabs(["1. One-Hot Encoding Demo", "2. Standardization Demo"])
+        
+        with tab_ohe:
+            st.markdown("#### Before vs After: One-Hot Encoding")
+            st.markdown("Notice how a single text column `State` is expanded into multiple independent binary columns, removing implicit hierarchy.")
+            
+            c1, c2 = st.columns(2)
+            with c1:
+                st.markdown("**Before (Original Categorical)**")
+                st.dataframe(df[['State']].head(), use_container_width=True)
+            with c2:
+                st.markdown("**After (One-Hot Encoded)**")
+                dummy_df = pd.get_dummies(df[['State']].head(), dtype=int)
+                st.dataframe(dummy_df, use_container_width=True)
+                
+        with tab_scale:
+            st.markdown("#### Before vs After: Standardization")
+            st.markdown("Notice how the *shape* of the distribution remains identical, but the X-axis scale shifts from hundreds of thousands of dollars to standard deviations (Z-scores) around 0.")
+            
+            c3, c4 = st.columns(2)
+            with c3:
+                # Before
+                chart_before = alt.Chart(df).mark_area(opacity=0.6, color='#6366f1', interpolate='step').encode(
+                    x=alt.X('R&D Spend', bin=alt.Bin(maxbins=20), title='Original R&D Spend ($)'),
+                    y=alt.Y('count()', title='Frequency')
+                ).properties(height=300, title="Original Distribution")
+                st.altair_chart(chart_before, use_container_width=True)
+            with c4:
+                # After
+                scaled_rd = (df['R&D Spend'] - df['R&D Spend'].mean()) / df['R&D Spend'].std()
+                df_scaled = pd.DataFrame({'Scaled R&D Spend': scaled_rd})
+                chart_after = alt.Chart(df_scaled).mark_area(opacity=0.6, color='#a855f7', interpolate='step').encode(
+                    x=alt.X('Scaled R&D Spend', bin=alt.Bin(maxbins=20), title='Standardized R&D Spend (Z-Score)'),
+                    y=alt.Y('count()', title='Frequency')
+                ).properties(height=300, title="Standardized Distribution (Mean=0, Std=1)")
+                st.altair_chart(chart_after, use_container_width=True)
+
+# ----------------- PHASE 4: MODELING -----------------
+elif app_mode == "4. Modeling":
+    st.markdown("<h1 class='gradient-text'>Phase 4: Modeling</h1>", unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class='{card_class}'>
+        <h3>🤖 Model Selection Strategy</h3>
+        <p>We trained four distinct types of algorithms using Scikit-Learn pipelines to identify the best fit:</p>
+        <ol>
+            <li><b>Multiple Linear Regression:</b> Provides a baseline understanding and directly interpretable linear equations.</li>
+            <li><b>Ridge Regression (L2 Regularization):</b> Adds regularized penalties to coefficients to control potential overfitting.</li>
+            <li><b>Random Forest Regressor:</b> An ensemble tree-based method that models non-linear relationships.</li>
+            <li><b>Gradient Boosting Regressor:</b> Sequentially builds boosting decision trees to minimize residuals.</li>
+        </ol>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ----------------- PHASE 5: EVALUATION -----------------
 elif app_mode == "5. Model Evaluation":
@@ -404,8 +448,8 @@ elif app_mode == "5. Model Evaluation":
         st.warning("Model metrics file not found. Please run the training pipeline first using `python train.py`.")
 
 # ----------------- PHASE 5.2: FEATURE SELECTION STUDY -----------------
-elif app_mode == "5. Feature Selection Study":
-    st.markdown("<h1 class='gradient-text'>Phase 5: Feature Selection Study</h1>", unsafe_allow_html=True)
+elif app_mode == "    5.1 Feature Selection Study":
+    st.markdown("<h1 class='gradient-text'>Phase 5.1: Feature Selection Study</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     This section explores **Feature Selection Schemes** using the 50 Startups dataset. 
@@ -606,7 +650,7 @@ elif app_mode == "5. Feature Selection Study":
         
         # 1. RMSE Chart
         rmse_line = alt.Chart(results_df).mark_line().encode(
-            x=alt.X('Number of Features:Q', scale=alt.Scale(domain=[1, 5]), tickInterval=1, title="Number of Features"),
+            x=alt.X('Number of Features:Q', scale=alt.Scale(domain=[1, 5]), axis=alt.Axis(values=[1, 2, 3, 4, 5]), title="Number of Features"),
             y=alt.Y('RMSE:Q', scale=alt.Scale(zero=False), title="RMSE ($)"),
             color=alt.Color('Scheme:N', scale=color_scale, legend=alt.Legend(title="Selection Scheme")),
             size=alt.condition(alt.datum.Scheme == optimal_scheme, alt.value(4.0), alt.value(1.5)),
@@ -628,7 +672,7 @@ elif app_mode == "5. Feature Selection Study":
         
         # 2. R2 Chart
         r2_line = alt.Chart(results_df).mark_line().encode(
-            x=alt.X('Number of Features:Q', scale=alt.Scale(domain=[1, 5]), tickInterval=1, title="Number of Features"),
+            x=alt.X('Number of Features:Q', scale=alt.Scale(domain=[1, 5]), axis=alt.Axis(values=[1, 2, 3, 4, 5]), title="Number of Features"),
             y=alt.Y('R-squared:Q', scale=alt.Scale(zero=False), title="R-squared"),
             color=alt.Color('Scheme:N', scale=color_scale, legend=None),
             size=alt.condition(alt.datum.Scheme == optimal_scheme, alt.value(4.0), alt.value(1.5)),
