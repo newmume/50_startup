@@ -1,0 +1,376 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #0f172a; color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+    #stage { width: 1920px; height: 1080px; position: relative; background: #000; overflow: hidden; }
+    .scene { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; opacity: 0; visibility: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; }
+    #subtitle { position: absolute; bottom: 60px; left: 0; width: 1920px; text-align: center; font-size: 46px; font-weight: bold; color: #fbbf24; text-shadow: 0px 4px 10px rgba(0,0,0,0.9); z-index: 100; padding: 0 120px; box-sizing: border-box; line-height: 1.4; letter-spacing: 1px; }
+    
+    /* Elegant Glowing Highlight Box */
+    .highlight-overlay {
+      position: absolute;
+      border: 5px solid #22c55e;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.6), inset 0 0 15px rgba(34, 197, 94, 0.3);
+      opacity: 0;
+      transform: scale(0.96);
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+    
+    /* Circular glow variant */
+    .highlight-overlay.circle {
+      border-radius: 50%;
+      border-color: #38bdf8;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+    
+    /* Cyan border variant */
+    .highlight-overlay.cyan {
+      border-color: #06b6d4;
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.6), inset 0 0 15px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Blue border variant */
+    .highlight-overlay.blue {
+      border-color: #3b82f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), inset 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Red border variant */
+    .highlight-overlay.red {
+      border-color: #ef4444;
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.6), inset 0 0 15px rgba(239, 68, 68, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="stage" data-composition-id="50-startups-v3" data-start="0" data-duration="337.51" data-width="1920" data-height="1080">
+    
+    <audio id="audio0" data-start="0.00" data-duration="17.57" data-track-index="0" src="assets_v2/slide_1.mp3"></audio>
+    <audio id="audio1" data-start="17.57" data-duration="33.24" data-track-index="1" src="assets_v2/slide_2.mp3"></audio>
+    <audio id="audio2" data-start="50.81" data-duration="33.67" data-track-index="2" src="assets_v2/slide_3.mp3"></audio>
+    <audio id="audio3" data-start="84.48" data-duration="34.34" data-track-index="3" src="assets_v2/slide_4.mp3"></audio>
+    <audio id="audio4" data-start="118.82" data-duration="32.95" data-track-index="4" src="assets_v2/slide_5.mp3"></audio>
+    <audio id="audio5" data-start="151.78" data-duration="32.18" data-track-index="5" src="assets_v2/slide_6.mp3"></audio>
+    <audio id="audio6" data-start="183.96" data-duration="32.09" data-track-index="6" src="assets_v2/slide_7.mp3"></audio>
+    <audio id="audio7" data-start="216.05" data-duration="27.55" data-track-index="7" src="assets_v2/slide_8.mp3"></audio>
+    <audio id="audio8" data-start="243.60" data-duration="32.14" data-track-index="8" src="assets_v2/slide_9.mp3"></audio>
+    <audio id="audio9" data-start="275.74" data-duration="33.24" data-track-index="9" src="assets_v2/slide_10.mp3"></audio>
+    <audio id="audio10" data-start="308.98" data-duration="28.54" data-track-index="10" src="assets_v2/slide_11.mp3"></audio>
+
+    <div id="subtitle"></div>
+
+    <!-- Slide 1: Intro -->
+    <div id="slide1" class="scene" style="background-image: url('assets_v2/slide_1.png');"></div>
+
+    <!-- Slide 2: Background -->
+    <div id="slide2" class="scene" style="background-image: url('assets_v2/slide_2.png');">
+      <div id="s2-h1" class="highlight-overlay cyan" style="left: 10%; top: 32%; width: 25%; height: 57%; border-radius: 28px;"></div>
+      <div id="s2-h2" class="highlight-overlay cyan" style="left: 36.5%; top: 32%; width: 27%; height: 57%; border-radius: 28px;"></div>
+      <div id="s2-h3" class="highlight-overlay cyan" style="left: 65%; top: 32%; width: 25%; height: 57%; border-radius: 28px;"></div>
+    </div>
+
+    <!-- Slide 3: CRISP-DM Workflow -->
+    <div id="slide3" class="scene" style="background-image: url('assets_v2/slide_3.png');">
+      <div id="s3-h1" class="highlight-overlay blue" style="left: 14%; top: 48%; width: 22%; height: 16%; border-radius: 16px;"></div>
+      <div id="s3-h2" class="highlight-overlay blue" style="left: 23%; top: 72%; width: 22%; height: 16%; border-radius: 16px;"></div>
+      <div id="s3-h3" class="highlight-overlay blue" style="left: 36.5%; top: 48%; width: 22%; height: 16%; border-radius: 16px;"></div>
+      <div id="s3-h4" class="highlight-overlay blue" style="left: 47%; top: 72%; width: 22%; height: 16%; border-radius: 16px;"></div>
+      <div id="s3-h5" class="highlight-overlay blue" style="left: 59.5%; top: 48%; width: 22%; height: 16%; border-radius: 16px;"></div>
+      <div id="s3-h6" class="highlight-overlay blue" style="left: 65.5%; top: 72%; width: 20%; height: 16%; border-radius: 16px;"></div>
+    </div>
+
+    <!-- Slide 4: Data Profiling (Gauges) -->
+    <div id="slide4" class="scene" style="background-image: url('assets_v2/slide_4.png');">
+      <div id="s4-h1" class="highlight-overlay circle" style="left: 15.5%; top: 58%; width: 21%; height: 37%;"></div>
+      <div id="s4-h2" class="highlight-overlay circle" style="left: 39.5%; top: 58%; width: 21%; height: 37%;"></div>
+      <div id="s4-h3" class="highlight-overlay circle" style="left: 63.5%; top: 58%; width: 21%; height: 37%;"></div>
+    </div>
+
+    <!-- Slide 5: Data Shape / Pipeline -->
+    <div id="slide5" class="scene" style="background-image: url('assets_v2/slide_5.png');">
+      <div id="s5-h1" class="highlight-overlay cyan" style="left: 15.5%; top: 67%; width: 22%; height: 26%; border-radius: 16px;"></div>
+      <div id="s5-h2" class="highlight-overlay cyan" style="left: 39.5%; top: 67%; width: 22%; height: 26%; border-radius: 16px;"></div>
+      <div id="s5-h3" class="highlight-overlay cyan" style="left: 63.5%; top: 67%; width: 22%; height: 26%; border-radius: 16px;"></div>
+    </div>
+
+    <!-- Slide 6: Models Comparison Table -->
+    <div id="slide6" class="scene" style="background-image: url('assets_v2/slide_6.png');">
+      <!-- Gradient Boosting Row Highlight -->
+      <div id="s6-h1" class="highlight-overlay" style="left: 16%; top: 38%; width: 68%; height: 12%; border-radius: 12px; border-color: #22c55e;"></div>
+      <!-- Random Forest Row -->
+      <div id="s6-h2" class="highlight-overlay blue" style="left: 16%; top: 50.5%; width: 68%; height: 11%; border-radius: 12px;"></div>
+      <!-- Linear Regression Row -->
+      <div id="s6-h3" class="highlight-overlay blue" style="left: 16%; top: 62.0%; width: 68%; height: 11%; border-radius: 12px;"></div>
+      <!-- Ridge Row -->
+      <div id="s6-h4" class="highlight-overlay blue" style="left: 16%; top: 73.5%; width: 68%; height: 11%; border-radius: 12px;"></div>
+    </div>
+
+    <!-- Slide 7: Feature Importance Stacked Bar -->
+    <div id="slide7" class="scene" style="background-image: url('assets_v2/slide_7.png');">
+      <!-- R&D Spend Bar -->
+      <div id="s7-h1" class="highlight-overlay" style="left: 17%; top: 18%; width: 60%; height: 24%; border-radius: 9999px; border-color: #22c55e;"></div>
+      <!-- Marketing Spend Bar -->
+      <div id="s7-h2" class="highlight-overlay circle" style="left: 77.2%; top: 18.5%; width: 4.8%; height: 23%; border-radius: 12px; border-color: #a855f7; box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);"></div>
+      <!-- Admin / State Negligible Bar -->
+      <div id="s7-h3" class="highlight-overlay" style="left: 82.2%; top: 18.5%; width: 2.2%; height: 23%; border-radius: 12px; border-color: #94a3b8; box-shadow: 0 0 25px rgba(148, 163, 184, 0.6);"></div>
+    </div>
+
+    <!-- Slide 8: Web App / Laptop -->
+    <div id="slide8" class="scene" style="background-image: url('assets_v2/slide_8.png');">
+      <div id="slide8-h1" class="highlight-overlay cyan" style="left: 16.5%; top: 21.5%; width: 16.5%; height: 26%; border-radius: 20px;"></div>
+      <div id="slide8-h2" class="highlight-overlay blue" style="left: 34.5%; top: 14%; width: 31%; height: 49%; border-radius: 16px;"></div>
+      <div id="slide8-h3" class="highlight-overlay cyan" style="left: 67%; top: 21.5%; width: 16.5%; height: 26%; border-radius: 20px;"></div>
+      <div id="slide8-h4" class="highlight-overlay" style="left: 33.5%; top: 66%; width: 33%; height: 11%; border-radius: 9999px; border-color: #22c55e;"></div>
+    </div>
+
+    <!-- Slide 9: Budget Recommendations 1 & 2 -->
+    <div id="slide9" class="scene" style="background-image: url('assets_v2/slide_9.png');">
+      <div id="s9-h1" class="highlight-overlay" style="left: 17.5%; top: 22.5%; width: 31.5%; height: 59%; border-radius: 36px; border-color: #22c55e;"></div>
+      <div id="s9-h2" class="highlight-overlay circle" style="left: 51%; top: 22.5%; width: 31.5%; height: 59%; border-radius: 36px; border-color: #a855f7; box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);"></div>
+    </div>
+
+    <!-- Slide 10: Operational Recommendations 3 & 4 -->
+    <div id="slide10" class="scene" style="background-image: url('assets_v2/slide_10.png');">
+      <div id="s10-h1" class="highlight-overlay blue" style="left: 17.5%; top: 22.5%; width: 31.5%; height: 59%; border-radius: 36px;"></div>
+      <div id="s10-h2" class="highlight-overlay red" style="left: 51%; top: 22.5%; width: 31.5%; height: 59%; border-radius: 36px;"></div>
+    </div>
+
+    <!-- Slide 11: Growth Equation -->
+    <div id="slide11" class="scene" style="background-image: url('assets_v2/slide_11.png');">
+      <div id="s11-h1" class="highlight-overlay blue" style="left: 20.8%; top: 41.5%; width: 21.8%; height: 38%; border-radius: 28px;"></div>
+      <div id="s11-h2" class="highlight-overlay" style="left: 57.5%; top: 41.5%; width: 21.8%; height: 38%; border-radius: 28px; border-color: #22c55e;"></div>
+      <div id="s11-h3" class="highlight-overlay circle" style="left: 43.5%; top: 48%; width: 13%; height: 23%; border-color: #22c55e;"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines = window.__timelines || {};
+    window.__timelines["50-startups-v3"] = tl;
+
+    // --- TIMELINES VARIABLES ---
+    const t_s1 = 0.00;
+    const d_s1 = 17.57;
+    const t_s2 = 17.57;
+    const d_s2 = 33.24;
+    const t_s3 = 50.81;
+    const d_s3 = 33.67;
+    const t_s4 = 84.48;
+    const d_s4 = 34.34;
+    const t_s5 = 118.82;
+    const d_s5 = 32.95;
+    const t_s6 = 151.78;
+    const d_s6 = 32.18;
+    const t_s7 = 183.96;
+    const d_s7 = 32.09;
+    const t_s8 = 216.05;
+    const d_s8 = 27.55;
+    const t_s9 = 243.60;
+    const d_s9 = 32.14;
+    const t_s10 = 275.74;
+    const d_s10 = 33.24;
+    const t_s11 = 308.98;
+    const d_s11 = 28.54;
+
+
+    // --- SUBTITLES ---
+    tl.set('#subtitle', {innerHTML: "大家好，歡迎收看 50 Startups 新創企業獲利預測的深度分析報告。"}, 0.100);tl.set('#subtitle', {innerHTML: ""}, 6.550);tl.set('#subtitle', {innerHTML: "本報告將基於 CRISP-DM 框架與機器學習技術，帶您深入探討新創公司如何從數據出發，精準預測獲利並優化決策。"}, 6.500);tl.set('#subtitle', {innerHTML: ""}, 17.512);tl.set('#subtitle', {innerHTML: "首先我們來看專案背景與核心發現。"}, 17.668);tl.set('#subtitle', {innerHTML: ""}, 21.568);tl.set('#subtitle', {innerHTML: "在商業目標上，我們希望協助創投機構和創業團隊進行數據驅動的預算分配。"}, 21.518);tl.set('#subtitle', {innerHTML: ""}, 28.943);tl.set('#subtitle', {innerHTML: "透過深度分析，我們發現研發支出是決定新創公司獲利的絕對主導因素，影響權重達百分之九十三點八，而公司所在的州別影響力則低於百分之零點六。"}, 28.943);tl.set('#subtitle', {innerHTML: ""}, 42.918);tl.set('#subtitle', {innerHTML: "最後，我們將這些模型封裝成即時互動的網頁應用，提供決策者進行模擬預測。"}, 42.918);tl.set('#subtitle', {innerHTML: ""}, 50.743);tl.set('#subtitle', {innerHTML: "為了確保分析的嚴謹度，我們遵循了業界標準的 CRISP-DM 跨產業資料探勘流程。"}, 50.908);tl.set('#subtitle', {innerHTML: ""}, 57.995);tl.set('#subtitle', {innerHTML: "這是一個端到端的機器學習旅程，包含六大階段：第一步，商業理解，明確預測目標；第二步，資料理解，分析數據品質；第三步，資料準備，完成特徵編碼與縮放；第四步，建模，訓練四種回歸模型；第五步，評估，挑選最佳演算法；以及第六步，部署，建立即時預測應用。"}, 57.945);tl.set('#subtitle', {innerHTML: ""}, 84.420);tl.set('#subtitle', {innerHTML: "在資料理解與探索階段，我們針對五十家新創公司的數據基因進行了關聯性分析。"}, 84.580);tl.set('#subtitle', {innerHTML: ""}, 92.105);tl.set('#subtitle', {innerHTML: "數據品質非常完美，無任何缺失值。"}, 92.055);tl.set('#subtitle', {innerHTML: ""}, 96.242);tl.set('#subtitle', {innerHTML: "相關性分析結果顯示，研發支出與利潤的相關係數高達零點九七三，呈極強正相關；行銷支出與利潤為零點七四八，呈中高度正相關；而行政支出與利潤的相關係數僅有零點二零一，關聯度極低。"}, 96.242);tl.set('#subtitle', {innerHTML: ""}, 114.592);tl.set('#subtitle', {innerHTML: "這初步揭示了資金分配對獲利的影響力。"}, 114.592);tl.set('#subtitle', {innerHTML: ""}, 118.755);tl.set('#subtitle', {innerHTML: "接下來是資料準備與塑形階段，這能讓機器學習模型更好地理解數據。"}, 118.924);tl.set('#subtitle', {innerHTML: ""}, 125.786);tl.set('#subtitle', {innerHTML: "我們主要進行了三項資料轉換：第一，對類別特徵「地區州別」進行獨熱編碼，消除州別順序的假定；第二，使用標準化縮放對研發、行政與行銷支出進行標準化處理，消除特徵量綱的影響；第三，以八比二的比例將數據隨機分割為四十筆訓練集與十筆測試集，以確保評估的公平性。"}, 125.736);tl.set('#subtitle', {innerHTML: ""}, 151.711);tl.set('#subtitle', {innerHTML: "進入模型建立與評估階段，我們訓練了四種不同的機器學習演算法，並在測試集上進行了效能對決。"}, 151.876);tl.set('#subtitle', {innerHTML: ""}, 161.251);tl.set('#subtitle', {innerHTML: "評估結果顯示，梯度提升回歸模型以零點九三五四的決定係數奪下冠軍，它的平均絕對誤差僅有四千九百八十六美元，預測精度最高；隨機森林回歸次之，而傳統的線性回歸與脊回歸表現稍遜，這顯示了非線性模型在處理新創獲利預測時的優勢。"}, 161.201);tl.set('#subtitle', {innerHTML: ""}, 183.888);tl.set('#subtitle', {innerHTML: "為了進一步解讀模型，我們從表現最佳的梯度提升模型中提取了特徵重要性。"}, 184.060);tl.set('#subtitle', {innerHTML: ""}, 191.110);tl.set('#subtitle', {innerHTML: "結果非常驚人：研發支出的影響權重高達百分之九十三點八，是獲利絕對的核心驅動引擎！"}, 191.060);tl.set('#subtitle', {innerHTML: ""}, 199.760);tl.set('#subtitle', {innerHTML: "相較之下，行銷支出只佔了百分之五點零五，行政管理費僅佔百分之零點五九，而地理州別的總權重更低於百分之零點五六。"}, 199.760);tl.set('#subtitle', {innerHTML: ""}, 211.560);tl.set('#subtitle', {innerHTML: "這證實了新創企業的成功高度依賴研發創新。"}, 211.560);tl.set('#subtitle', {innerHTML: ""}, 215.985);tl.set('#subtitle', {innerHTML: "在模型部署階段，我們將整個機器學習流程與最佳模型封裝成 Pipeline，並序列化為 best model dot pkl 檔案。"}, 216.148);tl.set('#subtitle', {innerHTML: ""}, 225.510);tl.set('#subtitle', {innerHTML: "接著，我們結合 Streamlit 前端框架，開發出即時互動的預測網頁應用程式。"}, 225.460);tl.set('#subtitle', {innerHTML: ""}, 232.573);tl.set('#subtitle', {innerHTML: "用戶可以在介面上隨意拖動三大支出滑桿，即可即時獲得由梯度提升模型算出的獲利預測值，實現數據的產品化落地。"}, 232.573);tl.set('#subtitle', {innerHTML: ""}, 243.535);tl.set('#subtitle', {innerHTML: "基於上述分析，我們為創投機構和創辦人總結了行動指南。"}, 243.700);tl.set('#subtitle', {innerHTML: ""}, 249.712);tl.set('#subtitle', {innerHTML: "首先是預算分配策略：第一，極大化研發投入。"}, 249.662);tl.set('#subtitle', {innerHTML: ""}, 254.900);tl.set('#subtitle', {innerHTML: "研發是回報率最高的投資，在資源有限時應優先且大量地向研發和產品傾斜。"}, 254.900);tl.set('#subtitle', {innerHTML: ""}, 262.662);tl.set('#subtitle', {innerHTML: "第二，戰略性佈局行銷。"}, 262.662);tl.set('#subtitle', {innerHTML: ""}, 265.700);tl.set('#subtitle', {innerHTML: "行銷能發揮乘數效應，但它是產品的放大器，應在產品研發成熟、達到市場契合度後再進行加速推廣。"}, 265.700);tl.set('#subtitle', {innerHTML: ""}, 275.687);tl.set('#subtitle', {innerHTML: "接著是營運優化策略：第三，精簡行政開銷。"}, 275.836);tl.set('#subtitle', {innerHTML: ""}, 280.873);tl.set('#subtitle', {innerHTML: "行政和日常運營管理開支與企業獲利能力沒有顯著相關，應儘可能保持扁平的組織與精簡的固定支出。"}, 280.823);tl.set('#subtitle', {innerHTML: ""}, 290.448);tl.set('#subtitle', {innerHTML: "第四，忽略地點迷思。"}, 290.448);tl.set('#subtitle', {innerHTML: ""}, 293.298);tl.set('#subtitle', {innerHTML: "營運州別對利潤的實際影響小於百分之零點六，在統計上微乎其微。"}, 293.298);tl.set('#subtitle', {innerHTML: ""}, 299.998);tl.set('#subtitle', {innerHTML: "新創在選址時應著眼於人才密度、供應鏈或生活成本，而非州別名氣或表面上的補貼政策。"}, 299.998);tl.set('#subtitle', {innerHTML: ""}, 308.923);tl.set('#subtitle', {innerHTML: "最後，讓我們重新定義新創企業的成長方程式。"}, 309.076);tl.set('#subtitle', {innerHTML: ""}, 314.063);tl.set('#subtitle', {innerHTML: "透過端到端的機器學習，我們成功將商業的不確定性轉化為精準的預測引擎，揭示了「產品至上、研發第一、突破地理限制」的新創獲利鐵律。"}, 314.013);tl.set('#subtitle', {innerHTML: ""}, 326.851);tl.set('#subtitle', {innerHTML: "這套預測引擎與決策框架，將持續協助我們定位未來的黃金賽道。"}, 326.851);tl.set('#subtitle', {innerHTML: ""}, 333.113);tl.set('#subtitle', {innerHTML: "本報告到此結束，謝謝您的聆聽與收看！"}, 333.113);tl.set('#subtitle', {innerHTML: ""}, 337.463);
+
+    // --- SCENE 1 (Slide 1) ---
+    tl.set("#slide1", { visibility: "visible" }, t_s1);
+    tl.fromTo("#slide1", { opacity: 0 }, { opacity: 1, duration: 1.0 }, t_s1);
+    tl.to("#slide1", { opacity: 0, duration: 1.0 }, t_s2 - 1.0);
+    tl.set("#slide1", { visibility: "hidden" }, t_s2);
+
+    // --- SCENE 2 (Slide 2) ---
+    tl.set("#slide2", { visibility: "visible" }, t_s2);
+    tl.fromTo("#slide2", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s2);
+    // Card highlights matching narration
+    // "在商業目標上，我們希望協助創投機構和創業團隊..."
+    tl.to("#s2-h1", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s2 + 6.0);
+    tl.to("#s2-h1", { opacity: 0.4, scale: 0.98, duration: 0.6, repeat: 3, yoyo: true }, t_s2 + 6.6);
+    // "透過深度分析，我們發現研發支出是決定新創公司獲利的絕對主導因素，影響權重達百分之九十三點八..."
+    tl.to("#s2-h1", { opacity: 0, scale: 0.95, duration: 0.4 }, t_s2 + 11.5);
+    tl.to("#s2-h2", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s2 + 12.0);
+    tl.to("#s2-h2", { opacity: 0.4, scale: 0.98, duration: 0.6, repeat: 3, yoyo: true }, t_s2 + 12.6);
+    // "最後，我們將這些模型封裝成即時互動的網頁應用，提供決策者進行模擬預測..."
+    tl.to("#s2-h2", { opacity: 0, scale: 0.95, duration: 0.4 }, t_s2 + 22.0);
+    tl.to("#s2-h3", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s2 + 22.5);
+    tl.to("#s2-h3", { opacity: 0.4, scale: 0.98, duration: 0.6, repeat: 2, yoyo: true }, t_s2 + 23.1);
+    tl.to("#s2-h3", { opacity: 0, scale: 0.95, duration: 0.5 }, t_s3 - 1.2);
+    
+    tl.to("#slide2", { opacity: 0, duration: 1.0 }, t_s3 - 1.0);
+    tl.set("#slide2", { visibility: "hidden" }, t_s3);
+
+    // --- SCENE 3 (Slide 3) ---
+    tl.set("#slide3", { visibility: "visible" }, t_s3);
+    tl.fromTo("#slide3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, t_s3);
+    // Step highlights matching narration:
+    // "第一步，商業理解..."
+    tl.to("#s3-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 8.5);
+    // "第二步，資料理解..."
+    tl.to("#s3-h1", { opacity: 0, duration: 0.3 }, t_s3 + 12.0);
+    tl.to("#s3-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 12.5);
+    // "第三步，資料準備..."
+    tl.to("#s3-h2", { opacity: 0, duration: 0.3 }, t_s3 + 16.0);
+    tl.to("#s3-h3", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 16.5);
+    // "第四步，建模..."
+    tl.to("#s3-h3", { opacity: 0, duration: 0.3 }, t_s3 + 20.0);
+    tl.to("#s3-h4", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 20.5);
+    // "第五步，評估..."
+    tl.to("#s3-h4", { opacity: 0, duration: 0.3 }, t_s3 + 24.0);
+    tl.to("#s3-h5", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 24.5);
+    // "以及第六步，部署..."
+    tl.to("#s3-h5", { opacity: 0, duration: 0.3 }, t_s3 + 28.0);
+    tl.to("#s3-h6", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s3 + 28.5);
+    tl.to("#s3-h6", { opacity: 0, duration: 0.5 }, t_s4 - 1.2);
+    
+    tl.to("#slide3", { opacity: 0, duration: 1.0 }, t_s4 - 1.0);
+    tl.set("#slide3", { visibility: "hidden" }, t_s4);
+
+    // --- SCENE 4 (Slide 4) ---
+    tl.set("#slide4", { visibility: "visible" }, t_s4);
+    tl.fromTo("#slide4", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s4);
+    // Gauge highlights:
+    // "研發支出與利潤的相關係數高達零點九七三..."
+    tl.to("#s4-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s4 + 11.0);
+    tl.to("#s4-h1", { opacity: 0.5, duration: 0.5, repeat: 2, yoyo: true }, t_s4 + 11.5);
+    // "行銷支出與利潤為零點七四八..."
+    tl.to("#s4-h1", { opacity: 0, duration: 0.3 }, t_s4 + 18.0);
+    tl.to("#s4-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s4 + 18.5);
+    tl.to("#s4-h2", { opacity: 0.5, duration: 0.5, repeat: 2, yoyo: true }, t_s4 + 19.0);
+    // "而行政支出與利潤的相關係數僅有零點二零一..."
+    tl.to("#s4-h2", { opacity: 0, duration: 0.3 }, t_s4 + 23.5);
+    tl.to("#s4-h3", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s4 + 24.0);
+    tl.to("#s4-h3", { opacity: 0.5, duration: 0.5, repeat: 2, yoyo: true }, t_s4 + 24.5);
+    tl.to("#s4-h3", { opacity: 0, duration: 0.5 }, t_s5 - 1.2);
+
+    tl.to("#slide4", { opacity: 0, duration: 1.0 }, t_s5 - 1.0);
+    tl.set("#slide4", { visibility: "hidden" }, t_s5);
+
+    // --- SCENE 5 (Slide 5) ---
+    tl.set("#slide5", { visibility: "visible" }, t_s5);
+    tl.fromTo("#slide5", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, t_s5);
+    // Preprocessing step highlights:
+    // "第一，對類別特徵「地區州別」進行獨熱編碼..."
+    tl.to("#s5-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s5 + 6.0);
+    // "第二，使用標準化縮放對研發、行政與行銷支出進行標準化處理..."
+    tl.to("#s5-h1", { opacity: 0, duration: 0.3 }, t_s5 + 13.5);
+    tl.to("#s5-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s5 + 14.0);
+    // "第三，以八比二的比例將數據隨機分割..."
+    tl.to("#s5-h2", { opacity: 0, duration: 0.3 }, t_s5 + 23.5);
+    tl.to("#s5-h3", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s5 + 24.0);
+    tl.to("#s5-h3", { opacity: 0, duration: 0.5 }, t_s6 - 1.2);
+
+    tl.to("#slide5", { opacity: 0, duration: 1.0 }, t_s6 - 1.0);
+    tl.set("#slide5", { visibility: "hidden" }, t_s6);
+
+    // --- SCENE 6 (Slide 6) ---
+    tl.set("#slide6", { visibility: "visible" }, t_s6);
+    tl.fromTo("#slide6", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, t_s6);
+    // Highlight Gradient Boosting (Champion Row)
+    // "評估結果顯示，梯度提升回歸模型以零點九三五四的決定係數奪下冠軍..."
+    tl.to("#s6-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s6 + 8.0);
+    tl.to("#s6-h1", { opacity: 0.4, duration: 0.6, repeat: 3, yoyo: true }, t_s6 + 8.5);
+    // "隨機森林回歸次之..."
+    tl.to("#s6-h1", { opacity: 0.8, duration: 0.3 }, t_s6 + 18.0);
+    tl.to("#s6-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s6 + 18.5);
+    // "而傳統的線性回歸與脊回歸表現稍遜..."
+    tl.to("#s6-h2", { opacity: 0, duration: 0.3 }, t_s6 + 21.0);
+    tl.to(["#s6-h3", "#s6-h4"], { opacity: 1, scale: 1.0, duration: 0.5, stagger: 0.3 }, t_s6 + 21.5);
+    tl.to(["#s6-h3", "#s6-h4", "#s6-h1"], { opacity: 0, duration: 0.5 }, t_s7 - 1.2);
+
+    tl.to("#slide6", { opacity: 0, duration: 1.0 }, t_s7 - 1.0);
+    tl.set("#slide6", { visibility: "hidden" }, t_s7);
+
+    // --- SCENE 7 (Slide 7) ---
+    tl.set("#slide7", { visibility: "visible" }, t_s7);
+    tl.fromTo("#slide7", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s7);
+    // Horizontal Bar highlights:
+    // "研發支出的影響權重高達百分之九十三點八..."
+    tl.to("#s7-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s7 + 7.5);
+    tl.to("#s7-h1", { opacity: 0.4, duration: 0.6, repeat: 3, yoyo: true }, t_s7 + 8.0);
+    // "相較之下，行銷支出只佔了百分之五點零五..."
+    tl.to("#s7-h1", { opacity: 0, duration: 0.3 }, t_s7 + 16.0);
+    tl.to("#s7-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s7 + 16.5);
+    // "行政管理費僅佔百分之零點五九，而地理州別的總權重更低於百分之零點五六..."
+    tl.to("#s7-h2", { opacity: 0, duration: 0.3 }, t_s7 + 19.5);
+    tl.to("#s7-h3", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s7 + 20.0);
+    tl.to("#s7-h3", { opacity: 0, duration: 0.5 }, t_s8 - 1.2);
+
+    tl.to("#slide7", { opacity: 0, duration: 1.0 }, t_s8 - 1.0);
+    tl.set("#slide7", { visibility: "hidden" }, t_s8);
+
+    // --- SCENE 8 (Slide 8) ---
+    tl.set("#slide8", { visibility: "visible" }, t_s8);
+    tl.fromTo("#slide8", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, t_s8);
+    // Pipeline and Web App highlights:
+    // "將整個機器學習流程與最佳模型封裝成 Pipeline，並序列化為 best model dot pkl..."
+    tl.to("#slide8-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s8 + 4.0);
+    // "接著，我們結合 Streamlit 前端框架，開發出即時互動的預測網頁應用程式..."
+    tl.to("#slide8-h1", { opacity: 0, duration: 0.3 }, t_s8 + 9.5);
+    tl.to("#slide8-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s8 + 10.0);
+    tl.to("#slide8-h3", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s8 + 12.0);
+    // "用戶可以在介面上隨意拖動三大支出滑桿，即可即時獲得由梯度提升模型算出的獲利預測值..."
+    tl.to(["#slide8-h2", "#slide8-h3"], { opacity: 0.3, duration: 0.4 }, t_s8 + 16.0);
+    tl.to("#slide8-h4", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s8 + 16.5);
+    tl.to(["#slide8-h2", "#slide8-h3", "#slide8-h4"], { opacity: 0, duration: 0.5 }, t_s9 - 1.2);
+
+    tl.to("#slide8", { opacity: 0, duration: 1.0 }, t_s9 - 1.0);
+    tl.set("#slide8", { visibility: "hidden" }, t_s9);
+
+    // --- SCENE 9 (Slide 9) ---
+    tl.set("#slide9", { visibility: "visible" }, t_s9);
+    tl.fromTo("#slide9", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s9);
+    // Highlight Rec 1 and Rec 2:
+    // "第一，極大化研發投入..."
+    tl.to("#s9-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s9 + 7.5);
+    tl.to("#s9-h1", { opacity: 0.4, duration: 0.6, repeat: 3, yoyo: true }, t_s9 + 8.0);
+    // "第二，戰略性佈局行銷..."
+    tl.to("#s9-h1", { opacity: 0, duration: 0.3 }, t_s9 + 19.5);
+    tl.to("#s9-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s9 + 20.0);
+    tl.to("#s9-h2", { opacity: 0.4, duration: 0.6, repeat: 2, yoyo: true }, t_s9 + 20.5);
+    tl.to("#s9-h2", { opacity: 0, duration: 0.5 }, t_s10 - 1.2);
+
+    tl.to("#slide9", { opacity: 0, duration: 1.0 }, t_s10 - 1.0);
+    tl.set("#slide9", { visibility: "hidden" }, t_s10);
+
+    // --- SCENE 10 (Slide 10) ---
+    tl.set("#slide10", { visibility: "visible" }, t_s10);
+    tl.fromTo("#slide10", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s10);
+    // Highlight Rec 3 and Rec 4:
+    // "第三，精簡行政開銷..."
+    tl.to("#s10-h1", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s10 + 4.5);
+    tl.to("#s10-h1", { opacity: 0.4, duration: 0.6, repeat: 2, yoyo: true }, t_s10 + 5.0);
+    // "第四，忽略地點迷思..."
+    tl.to("#s10-h1", { opacity: 0, duration: 0.3 }, t_s10 + 13.0);
+    tl.to("#s10-h2", { opacity: 1, scale: 1.0, duration: 0.5 }, t_s10 + 13.5);
+    tl.to("#s10-h2", { opacity: 0.4, duration: 0.6, repeat: 2, yoyo: true }, t_s10 + 14.0);
+    tl.to("#s10-h2", { opacity: 0, duration: 0.5 }, t_s11 - 1.2);
+
+    tl.to("#slide10", { opacity: 0, duration: 1.0 }, t_s11 - 1.0);
+    tl.set("#slide10", { visibility: "hidden" }, t_s11);
+
+    // --- SCENE 11 (Slide 11) ---
+    tl.set("#slide11", { visibility: "visible" }, t_s11);
+    tl.fromTo("#slide11", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1.0, duration: 1.0, ease: "power2.out" }, t_s11);
+    // Highlight elements:
+    // "解開不確定性轉化為精準的預測引擎..."
+    tl.to("#s11-h1", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s11 + 6.0);
+    tl.to("#s11-h3", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s11 + 10.0);
+    tl.to("#s11-h2", { opacity: 1, scale: 1.0, duration: 0.6 }, t_s11 + 12.0);
+    
+    tl.to(["#s11-h1", "#s11-h2", "#s11-h3"], { opacity: 0.5, duration: 1.0 }, t_s11 + 20.0);
+    tl.to("#slide11", { opacity: 0, duration: 2.0 }, 337.51 - 2.0);
+    tl.set("#slide11", { visibility: "hidden" }, 337.51);
+
+  </script>
+</body>
+</html>

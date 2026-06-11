@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .streamlit/
+video_project/app/ffmpeg.exe
+video_project/app/ffmpeg.zip
+video_project/app/ffmpeg-master-latest-win64-gpl/
+video_project/app/renders/
