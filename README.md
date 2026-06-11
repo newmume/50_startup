@@ -32,34 +32,6 @@ An end-to-end Machine Learning project using **Scikit-Learn** and **Streamlit** 
 └── README.md               # Project overview and run guide (this file)
 ```
 
----
-
-## ⚡ Quick Start & Setup
-
-### 1. Clone the repository and navigate to the directory
-```powershell
-cd D:\Mume\20260609-50starup
-```
-
-### 2. Install dependencies
-Ensure you have Python installed, then install all requirements:
-```powershell
-pip install -r requirements.txt
-```
-
-### 3. Run the ML Pipeline (Optional)
-Run the training script to execute preprocessing, train the regressors, and save the serialized model pipeline:
-```powershell
-python train.py
-```
-*This updates `best_model.pkl` and the evaluation stats in `model_metrics.json`.*
-
-### 4. Run the Streamlit Dashboard
-Launch the interactive dashboard locally:
-```powershell
-streamlit run app.py --server.port 9000
-```
-Open your browser and go to **[http://127.0.0.1:9000](http://127.0.0.1:9000)** to interact with the app.
 
 ---
 
