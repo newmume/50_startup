@@ -3,6 +3,9 @@
 An end-to-end Machine Learning project using **Scikit-Learn** and **Streamlit** to predict startup profit based on R&D, Administration, and Marketing expenditures across multiple states. This project follows the industry-standard **CRISP-DM** (Cross-Industry Standard Process for Data Mining) methodology.
 
 LIVE DEMO：https://50startup.streamlit.app/
+
+![Dashboard Preview](50_starup_fig_專業.png)
+
 ---
 
 ## 📋 Table of Contents
