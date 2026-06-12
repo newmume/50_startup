@@ -8,13 +8,32 @@ LIVE DEMO：https://50startup.streamlit.app/
 
 ---
 
+## 🎬 Demo & Presentation
+
+### 🎥 Demo Video
+You can watch the interactive features of the Streamlit dashboard in action below:
+
+<video src="50_starup_vedio_V3-2.mp4" width="100%" controls></video>
+
+*Alternative link: [🎬 Click here to view the video file directly](50_starup_vedio_V3-2.mp4)*
+
+### 📊 Project Presentation
+View the project slides showing our methodology, results, and recommendations:
+
+*   [📊 Online Interactive Presentation (Office Web Viewer)](https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/newmume/50_startup/main/50_starup_PPT_V3.pptx)
+*   [💾 Download PPTX File (50_starup_PPT_V3.pptx)](50_starup_PPT_V3.pptx)
+
+---
+
 ## 📋 Table of Contents
-1. [Project Overview](#-project-overview)
-2. [Project Structure](#-project-structure)
-3. [Quick Start & Setup](#-quick-start--setup)
-4. [CRISP-DM Workflow Summary](#-crisp-dm-workflow-summary)
-5. [Model Performance Comparison](#-model-performance-comparison)
-6. [Key Business Recommendations](#-key-business-recommendations)
+1. [Demo & Presentation](#-demo--presentation)
+2. [Project Overview](#-project-overview)
+3. [Project Structure](#-project-structure)
+4. [Quick Start & Setup](#-quick-start--setup)
+5. [CRISP-DM Workflow Summary](#-crisp-dm-workflow-summary)
+6. [Model Performance Comparison](#-model-performance-comparison)
+7. [Key Business Recommendations](#-key-business-recommendations)
+8. [Contact](#-contact)
 
 ---
 
@@ -90,3 +109,10 @@ The best pipeline is serialized into `best_model.pkl` and deployed as a real-tim
 2.  **Strategic Marketing Spends**: Marketing is a positive multiplier but is secondary to product quality (R&D). Apply marketing budgets as an accelerator once the product is mature.
 3.  **Minimize Admin Bloat**: Administrative overhead does not correlate with profit margins. Keep operational costs lean.
 4.  **Ignore Location Bias**: Operational state shows no statistical significance on profit. Choose business locations based on talent access or physical logistics rather than state name profit expectations.
+
+---
+
+## 📬 Contact
+For inquiries, feedback, or collaboration, feel free to reach out:
+*   **Email**: [newmume@gmail.com](mailto:newmume@gmail.com)
+*   **GitHub**: [newmume/50_startup](https://github.com/newmume/50_startup)
